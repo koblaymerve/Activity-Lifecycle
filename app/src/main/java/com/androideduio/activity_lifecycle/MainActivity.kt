@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private val key = "LifeCycle"
 
-    //Activity oluştuğunda çalışan method
+    //Activity oluştuğunda çalışan ilk method
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.e(key, "onCreate")
         super.onCreate(savedInstanceState)
@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Arayüz içinde değişiklik olduğunda çalışan method
+    //setContentView(), addContentView() metodları sonrasında bu method çağrılır
     override fun onContentChanged() {
         Log.e(key, "onContentChanged")
     }
@@ -80,13 +81,15 @@ class MainActivity : AppCompatActivity() {
         Log.e(key, "onPause")
     }
 
-    //Activity öldürülmeden önce çağrılan method
+    /* Activity öldürülmeden önce çağrılan method
+     * Mesela arka plana alınan activitynin hafızada yer kaplamaması için sistem tarafından kapatıldığı durumda bu method ile activitynin durumu kaydedilir.Activity tekrar aktif edildiğinde activitynin son durumu geri yüklenebilir
+    */
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         Log.e(key, "onSaveInstanceState")
     }
 
-    //Activity artık kullanıcı tarafından görüntülenemediğinde çağrılan method
+    //Activity artık kullanıcı tarafından görüntülenemediğinde çağrılan method (activity öldürülür)
     override fun onStop() {
         super.onStop()
         Log.e(key, "onStop")
@@ -129,6 +132,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Activity çalışırken cihaz yapılandırması değiştiğinde sistem tarafından çağrılan method
+    // Örneğin ekranın döndürülmesi, dil ayarının değiştirilmesi, giriş aygıtlarındaki değişiklikler gibi
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         Log.e(key, "onConfigurationChanged")
