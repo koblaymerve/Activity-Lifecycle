@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Arayüz içinde değişiklik olduğunda çalışan method
-    //setContentView() , addContentView() metodları sonrasında bu method çağrılır
+    //setContentView(), addContentView() metodları sonrasında bu method çağrılır
     override fun onContentChanged() {
         Log.e(key, "onContentChanged")
     }
